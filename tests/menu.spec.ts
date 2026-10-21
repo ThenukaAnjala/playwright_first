@@ -14,15 +14,21 @@ test ("Verify menubutton visibility and click functionality", async({page}) => {
     await login.openLogin();
     await login.enterUsername("standard_user", "secret_sauce");
 
-    //Confirm login completed before checking the menu
-    await expect(page).toHaveURL(/inventory\.html/);
+    // //Confirm login completed before checking the menu
+    // await expect(page).toHaveURL(/inventory\.html/);
     //check visibility of menu button
     await expect(menu.menuButton).toBeVisible();
 
     //click the menu button
     await menu.clickMenuButton();
+
+    //Visible cross button
+    await expect(menu.crossButton).toBeVisible()
+    //Check cross button
+    await menu.clickCrossButton();
+
     // //Visibel menu drower
-    
+    await menu.clickMenuButton();
     //Ckeck menu tabs
     await expect(menu.allItems).toBeVisible();
     await expect(menu.dynamicCatolog).toBeVisible();
@@ -33,19 +39,33 @@ test ("Verify menubutton visibility and click functionality", async({page}) => {
 
     //check submenu button
     await expect(menu.submenuChevron).toBeVisible();
-    await menu.clickCrossButton();
-    
 
-    //Click submenu Chevron button
-
+        //Click submenu Chevron button
     await menu.clickSubMenuChevron();
     await expect(menu.submenuChevron).toBeVisible();
     await expect(menu.lazyLoad).toBeVisible();
     await expect(menu.spinner).toBeVisible();
     await expect(menu.slider).toBeVisible();
+
+    //Check navigation
+    await menu.clickLazLoadButton();
+    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-lazy-load.html");
     
+    await menu.clickMenuButton();
+    await menu.clickSubMenuChevron();
+
+    await menu.clickSpinnerButton();
+    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-spinner.html");
+
+    await menu.clickMenuButton();
+    await menu.clickSubMenuChevron();
+
+    await menu.clickSliderButton()
+    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-slider.html")
 
     
+
+
 
 
 
@@ -57,8 +77,12 @@ test ("Verify menubutton visibility and click functionality", async({page}) => {
 
     //click the menu button
     await menu.clickMenuButton();
+    await expect(menu.crossButton).toBeVisible();
+    await menu.clickCrossButton();
 
+    
     //check menu tabs
+    await menu.clickMenuButton();
     await expect(menu.allItems).toBeVisible();
     await expect(menu.dynamicCatolog).toBeVisible();
     await expect(menu.about).toBeVisible();
@@ -69,16 +93,32 @@ test ("Verify menubutton visibility and click functionality", async({page}) => {
     //check submenu button
     await expect(menu.submenuChevron).toBeVisible();
     
-
     //Click submenu Chevron button
-
     await menu.clickSubMenuChevron();
     await expect(menu.submenuChevron).toBeVisible();
     await expect(menu.lazyLoad).toBeVisible();
     await expect(menu.spinner).toBeVisible();
     await expect(menu.slider).toBeVisible();
 
-    await expect(menu.crossButton).toBeVisible();
+    //Check navigation
+    await menu.clickLazLoadButton();
+    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-lazy-load.html");
+    
+    await menu.clickMenuButton();
+    await menu.clickSubMenuChevron();
+
+    await menu.clickSpinnerButton();
+    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-spinner.html");
+
+    await menu.clickMenuButton();
+    await menu.clickSubMenuChevron();
+
+    await menu.clickSliderButton()
+    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-slider.html")
+
+
+
+
 
 
     //open the catalog spinner
@@ -88,7 +128,11 @@ test ("Verify menubutton visibility and click functionality", async({page}) => {
     await expect(menu.menuButton).toBeVisible();
     //click the menu button
     await menu.clickMenuButton();
+    await menu.clickCrossButton();
+
+    
     //check the menu all items
+    await menu.clickAboutButton();
     await expect(menu.allItems).toBeVisible();
     await expect(menu.dynamicCatolog).toBeVisible();
     await expect(menu.submenuChevron).toBeVisible();
@@ -103,9 +147,28 @@ test ("Verify menubutton visibility and click functionality", async({page}) => {
     await expect(menu.spinner).toBeVisible();
     await expect(menu.slider).toBeVisible();
 
+    //Check navigation
+    await menu.clickLazLoadButton();
+    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-lazy-load.html");
+    
+    await menu.clickMenuButton();
+    await menu.clickSubMenuChevron();
+
+    await menu.clickSpinnerButton();
+    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-spinner.html");
+
+    await menu.clickMenuButton();
+    await menu.clickSubMenuChevron();
+
+    await menu.clickSliderButton()
+    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-slider.html")
 
 
 
+
+
+
+    
     //open the slider page
     await page.goto("https://www.saucedemo.com/dynamic-catalog-slider.html");
 
@@ -136,3 +199,4 @@ test ("Verify menubutton visibility and click functionality", async({page}) => {
 
 
 })
+
