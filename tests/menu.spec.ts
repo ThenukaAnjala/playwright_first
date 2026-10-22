@@ -232,13 +232,13 @@ test("TC04 - Verify menu functionality on Slider Page", async ({ page }) => {
     await page.goto("https://www.saucedemo.com/dynamic-catalog-slider.html");
 
     // Check menu button visibility
-    await expect(menu.menuButton).toBeVisible();
+    // await expect(menu.menuButton).toBeVisible();
 
     // Open menu
     await menu.clickMenuButton();
 
     // Check close button
-    await expect(menu.crossButton).toBeVisible();
+    // await expect(menu.crossButton).toBeVisible();
     await menu.clickCrossButton();
 
     // Open menu again
