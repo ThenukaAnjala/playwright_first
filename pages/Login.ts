@@ -23,10 +23,13 @@ async openLogin(){
     await this.page.goto("https://www.saucedemo.com/");
 }
 
-async enterUsername(Username: string , Password: string){
+async enterUsername(
+    Username: string , 
+    Password: string)
+    {
     await this.userName.fill(Username);
     await this.password.fill(Password);
     await this.loginButton.click();
 
-}
+    }
 }
