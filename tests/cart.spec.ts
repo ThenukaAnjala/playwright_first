@@ -31,6 +31,7 @@ test('TC-06 - Verify that the Cart button works correctly', async ({ page }) => 
     await cart.clickContinueSoppingButton()
     
 });
+//000000
 //Bug
 test('TC-07 - Verify checkout with empty cart', async ({ page }) => {
     const cart = new Cart(page);

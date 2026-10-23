@@ -1,4 +1,4 @@
-import {Page, Locator, Expect, expect} from '@playwright/test';
+import {Page, Locator, expect} from '@playwright/test';
 
 export default class Cart{
     //Declare page properties
