@@ -50,3 +50,45 @@ test("TC13 - Verify cancel checkout before finishing order", async ({ page }) =>
     await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html");
 
 })
+
+test("TC14 - Verify checkout with Last Name and ZIP Code but without First Name", async ({ page }) => {
+    const cart = new Cart(page);
+    const checkout = new Checkout(page);
+
+    await cart.addProductToCart("sauce-labs-backpack")
+    await cart.addProductToCart("sauce-labs-bike-light");
+    await cart.clickCarButton()
+    await cart.clickCheckoutButton()
+    await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
+    await checkout.enterFirstNameLastNameAndZipCode("", "Kulathunga", "85779");
+    await checkout.clickContinueButton()
+    await expect(checkout.errorMessage).toContainText(" First Name is required")
+});
+
+test("TC15 - Verify checkout with First Name and ZIP Code but without Last Name", async ({ page }) => {
+    const cart = new Cart(page);
+    const checkout = new Checkout(page);
+
+    await cart.addProductToCart("sauce-labs-backpack")
+    await cart.addProductToCart("sauce-labs-bike-light");
+    await cart.clickCarButton()
+    await cart.clickCheckoutButton()
+    await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
+    await checkout.enterFirstNameLastNameAndZipCode("Tiran", "", "85779");
+    await checkout.clickContinueButton()
+    await expect(checkout.errorMessage).toContainText("Last Name is required")
+});
+
+test("TC16 - Verify checkout with First Name and Last Name but without Zip code", async ({ page }) => {
+    const cart = new Cart(page);
+    const checkout = new Checkout(page);
+
+    await cart.addProductToCart("sauce-labs-backpack")
+    await cart.addProductToCart("sauce-labs-bike-light");
+    await cart.clickCarButton()
+    await cart.clickCheckoutButton()
+    await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
+    await checkout.enterFirstNameLastNameAndZipCode("Tiran", "Kulathunga", "");
+    await checkout.clickContinueButton()
+    await expect(checkout.errorMessage).toContainText("Postal Code is required")
+});

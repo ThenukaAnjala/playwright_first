@@ -8,6 +8,7 @@ export default class Checkout{
     readonly continue :Locator;
     readonly finish :Locator;
     readonly cancel :Locator;
+    readonly errorMessage: Locator;
 
 
     constructor(page:Page){
@@ -17,7 +18,8 @@ export default class Checkout{
         this.zipCode = page.locator('[data-test="postalCode"]');
         this.continue = page.locator('[data-test="continue"]');
         this.finish =  page.locator('[data-test="finish"]');
-        this.cancel =  page.locator('[data-test="finish"]');
+        this.cancel =  page.locator('[data-test="cancel"]');
+        this.errorMessage =  page.locator('div.error-message-container.error');
     }
 
     async enterFirstNameLastNameAndZipCode(
