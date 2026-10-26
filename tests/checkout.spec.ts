@@ -92,3 +92,81 @@ test("TC16 - Verify checkout with First Name and Last Name but without Zip code"
     await checkout.clickContinueButton()
     await expect(checkout.errorMessage).toContainText("Postal Code is required")
 });
+
+test("TC17 - Verify checkout with all fields empty", async ({ page }) => {
+    const cart = new Cart(page);
+    const checkout = new Checkout(page);
+
+    await cart.addProductToCart("sauce-labs-backpack")
+    await cart.addProductToCart("sauce-labs-bike-light");
+    await cart.clickCarButton()
+    await cart.clickCheckoutButton()
+    await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
+    await checkout.enterFirstNameLastNameAndZipCode("", "", "");
+    await checkout.clickContinueButton()
+    await expect(checkout.errorMessage).toContainText("First Name is required")
+})
+
+test("TC18 - Verify checkout with only spaces in First Name", async ({ page }) => {
+    const cart = new Cart(page);
+    const checkout = new Checkout(page);
+
+    await cart.addProductToCart("sauce-labs-backpack")
+    await cart.addProductToCart("sauce-labs-bike-light");
+    await cart.clickCarButton()
+    await cart.clickCheckoutButton()
+    await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
+    await checkout.enterFirstNameLastNameAndZipCode("      ", "Kulathunga", "85779");
+    await checkout.clickContinueButton()
+    await checkout.clickFinishButton()
+
+
+})
+
+test("TC19 - Verify checkout with only spaces in Last Name", async ({ page }) => {
+    const cart = new Cart(page);
+    const checkout = new Checkout(page);
+
+    await cart.addProductToCart("sauce-labs-backpack")
+    await cart.addProductToCart("sauce-labs-bike-light");
+    await cart.clickCarButton()
+    await cart.clickCheckoutButton()
+    await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
+    await checkout.enterFirstNameLastNameAndZipCode("Tiran", "    ", "85779");
+    await checkout.clickContinueButton()
+    await checkout.clickFinishButton()
+
+
+})
+
+test("TC20 - Verify checkout with only spaces in Zip Code", async ({ page }) => {
+    const cart = new Cart(page);
+    const checkout = new Checkout(page);
+
+    await cart.addProductToCart("sauce-labs-backpack")
+    await cart.addProductToCart("sauce-labs-bike-light");
+    await cart.clickCarButton()
+    await cart.clickCheckoutButton()
+    await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
+    await checkout.enterFirstNameLastNameAndZipCode("Tiran", "Kulathunga", "     ");
+    await checkout.clickContinueButton()
+    await checkout.clickFinishButton()
+
+
+})
+
+test("TC21 - Verify checkout with only spaces in all fields", async ({ page }) => {
+
+    const cart = new Cart(page);
+    const checkout = new Checkout(page);
+
+    await cart.addProductToCart("sauce-labs-backpack")
+    await cart.addProductToCart("sauce-labs-bike-light");
+    await cart.clickCarButton()
+    await cart.clickCheckoutButton()
+    await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
+    await checkout.enterFirstNameLastNameAndZipCode("    ", "      ", "     ");
+    await checkout.clickContinueButton()
+    await checkout.clickFinishButton()
+
+})
