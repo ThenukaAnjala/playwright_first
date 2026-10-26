@@ -1,4 +1,4 @@
-import {Page, Locator} from "@playwright/test";//imprt page libbry
+import {Page, Locator} from "@playwright/test";//import page library
 //Create login class
 export default class Login{
     //declare page property

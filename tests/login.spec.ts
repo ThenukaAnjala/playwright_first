@@ -4,7 +4,7 @@ import Login from '../pages/Login';
 
 test ("Open SauceDemo Login page", async({page})=>{
 
-    //create loginclass object
+    //create login class object
     const login = new Login(page);
 
     try{
@@ -33,8 +33,8 @@ test ("Open SauceDemo Login page", async({page})=>{
 
 })
 
-test("Verify login incurrect username and currect password", async({page}) =>{
-    //crate the login class object
+test("Verify login with incorrect username and correct password", async({page}) =>{
+    //create the login class object
     const login = new Login(page);
 
     try{
@@ -45,7 +45,7 @@ test("Verify login incurrect username and currect password", async({page}) =>{
     //check the url
     await expect(page).toHaveURL("https://www.saucedemo.com/");
 
-     //Enter Incurrect username and password
+     //Enter Incorrect username and password
      await login.enterUsername("kalana","standard_user");
 
      //Verify the have error message
@@ -59,7 +59,7 @@ test("Verify login incurrect username and currect password", async({page}) =>{
     }
 });
 
-test("Verify login with currect username and incurrect password", async({page}) =>{
+test("Verify login with correct username and incorrect password", async({page}) =>{
     //create login class object
     const login = new Login(page);
 
@@ -71,13 +71,13 @@ test("Verify login with currect username and incurrect password", async({page}) 
     //Check the Url
     await expect(page).toHaveURL("https://www.saucedemo.com/");
 
-    //Enter the currect username & incurrect password
+    //Enter the correct username & incorrect password
     await login.enterUsername("standard_user","x2548xwyQ");
 
     //Verify the have error message 
     await expect(login.errorMessage).toBeVisible();
 
-    //Verify the error message context
+    //Verify the error message text
     await expect(login.errorMessage).toContainText("Username and password do not match any user in this service");
     }
     catch(error){
@@ -87,7 +87,7 @@ test("Verify login with currect username and incurrect password", async({page}) 
 
 })
 
-test("Verify login with currect username and emty password", async({page}) =>{
+test("Verify login with correct username and empty password", async({page}) =>{
     //Create login class object
     const login = new Login(page);
 
@@ -99,13 +99,13 @@ test("Verify login with currect username and emty password", async({page}) =>{
     //check the url 
     await expect(page).toHaveURL("https://www.saucedemo.com/");
 
-    //Enter currect username and emty password
+    //Enter correct username and empty password
     await login.enterUsername("standard_user","");
 
-    //check error message are vicible 
+    //check that the error message is visible
     await expect(login.errorMessage).toBeVisible();
     
-    //Verify the error message contex
+    //Verify the error message text
     await expect(login.errorMessage).toContainText("Password is required");
     }catch(error){
         console.error("Login test error :", error);
@@ -114,8 +114,8 @@ test("Verify login with currect username and emty password", async({page}) =>{
 
 })
 
-//check the login with emty username & currect password
-test("Verify login with emty username and currect password", async({page}) => {
+//check the login with empty username & correct password
+test("Verify login with empty username and correct password", async({page}) => {
     //Create login class object
     const login = new Login(page);
 
@@ -126,13 +126,13 @@ test("Verify login with emty username and currect password", async({page}) => {
     //check the url
     await expect(page).toHaveURL("https://www.saucedemo.com/");
 
-    //enter emty username and currect password
+    //enter empty username and correct password
     await login.enterUsername("","secret_sauce");
 
     //Verify the have error message
     await expect(login.errorMessage).toBeVisible()
 
-    //Verify error message context
+    //Verify error message text
     await expect(login.errorMessage).toContainText("Username is required")
     }catch(error){
         console.error("Login page error: ",error);
@@ -140,8 +140,8 @@ test("Verify login with emty username and currect password", async({page}) => {
     }
 })
 
-//check the login with both are emmty username and password
-test("Verify login with emty username and emty password", async({page}) =>{
+//check the login with both are empty username and password
+test("Verify login with empty username and empty password", async({page}) =>{
     //Create login class object
     const login = new Login(page)
     
@@ -151,13 +151,13 @@ test("Verify login with emty username and emty password", async({page}) =>{
 
     await expect(page).toHaveURL("https://www.saucedemo.com/");
 
-    //Enter emty username and password
+    //Enter empty username and password
     await login.enterUsername("","");
 
     //Verify have the error message
     await expect(login.errorMessage).toBeVisible();
 
-    //Verify error message contan text
+    //Verify error message contains text
     await expect(login.errorMessage).toContainText("Username is required")
     }catch(error){
         console.error("Login page error :",error);

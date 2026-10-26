@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
     await login.openLogin();
     await login.enterUsername("standard_user", "secret_sauce");
 
-    //Verify login scccessful
+    //Verify login successful
     await expect(page).toHaveURL(
         "https://www.saucedemo.com/inventory.html"
     )
@@ -21,14 +21,14 @@ test('TC-06 - Verify that the Cart button works correctly', async ({ page }) => 
 
     //check the CartIcon
     await expect(cart.cartIcon).toBeVisible()
-     await cart.clickCarButton();
-    //verify navigate currect page
+     await cart.clickCartButton();
+    //verify navigate correct page
     await expect(page).toHaveURL("https://www.saucedemo.com/cart.html");
-    //go baxk
+    //go back
     await expect(cart.cartHavePro).toHaveCount(0);
     // await page.goBack()
 
-    await cart.clickContinueSoppingButton()
+    await cart.clickContinueShoppingButton()
     
 });
 //000000
@@ -36,7 +36,7 @@ test('TC-06 - Verify that the Cart button works correctly', async ({ page }) => 
 test('TC-07 - Verify checkout with empty cart', async ({ page }) => {
     const cart = new Cart(page);
 
-    await cart.clickCarButton();
+    await cart.clickCartButton();
     await cart.clickCheckoutButton();
     // await expect(cart.cartHavePro).toBeVisible();
 })
@@ -47,13 +47,13 @@ test("TC-08 - Verify Remove button functionality in cart page'", async ({page}) 
     const cart = new Cart(page);
 
     await cart.clickAddToCartButton();
-    await cart.clickCarButton();
+    await cart.clickCartButton();
     await expect(cart.cartHavePro).toHaveCount(1);
-    await cart.clickContinueSoppingButton();
-    await cart.clickRemoveButoon();
+    await cart.clickContinueShoppingButton();
+    await cart.clickRemoveButton();
 
-    await cart.clickCarButton();
-    // await cart.clickRemoveButoon()
+    await cart.clickCartButton();
+    // await cart.clickRemoveButton()
 
 })
 
@@ -61,10 +61,10 @@ test('TC-09 - Verify Remove button on All Items page', async ({ page }) => {
     const cart = new Cart(page);
 
     await cart.clickAddToCartButton();
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await expect(cart.cartHavePro).toHaveCount(1);
-    await cart.clickContinueSoppingButton();
-    await cart.clickRemoveButoon()
+    await cart.clickContinueShoppingButton();
+    await cart.clickRemoveButton()
 })
 
 test('TC-10 - Verify adding two products to cart', async ({ page }) => {
@@ -72,7 +72,7 @@ test('TC-10 - Verify adding two products to cart', async ({ page }) => {
 
     await cart.addProductToCart("sauce-labs-backpack");
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await expect(cart.cartHavePro).toHaveCount(2)
     
 })
@@ -82,7 +82,7 @@ test('TC-11 – Verify that the Checkout button works correctly when products ar
 
     await cart.addProductToCart("sauce-labs-backpack");
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await expect(cart.cartHavePro).toHaveCount(2)
     await cart.clickCheckoutButton();
     

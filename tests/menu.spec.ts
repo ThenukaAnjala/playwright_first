@@ -35,7 +35,7 @@ test("TC01 - Verify menu functionality on Inventory Page", async ({ page }) => {
 
     // Check menu tabs
     await expect(menu.allItems).toBeVisible();
-    await expect(menu.dynamicCatolog).toBeVisible();
+    await expect(menu.dynamicCatalog).toBeVisible();
     await expect(menu.about).toBeVisible();
     await expect(menu.logout).toBeVisible();
     await expect(menu.resetAppState).toBeVisible();
@@ -52,7 +52,7 @@ test("TC01 - Verify menu functionality on Inventory Page", async ({ page }) => {
     await expect(menu.slider).toBeVisible();
 
     // Navigate to Lazy Load page
-    await menu.clickLazLoadButton();
+    await menu.clickLazyLoadButton();
     await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-lazy-load.html");
 
     // Navigate to Spinner page
@@ -72,7 +72,7 @@ test("TC01 - Verify menu functionality on Inventory Page", async ({ page }) => {
     await menu.clickAboutSidebarLink();
     await expect(page).toHaveURL("https://saucelabs.com/");
 
-    //Bcck to page
+    //Back to page
     await page.goBack()
     // await expect(page).toHaveURL()
 
@@ -106,7 +106,7 @@ test("TC02 - Verify menu functionality on Lazy Load Page", async ({ page }) => {
 
     // Verify menu tabs
     await expect(menu.allItems).toBeVisible();
-    await expect(menu.dynamicCatolog).toBeVisible();
+    await expect(menu.dynamicCatalog).toBeVisible();
     await expect(menu.about).toBeVisible();
     await expect(menu.logout).toBeVisible();
     await expect(menu.resetAppState).toBeVisible();
@@ -143,7 +143,7 @@ test("TC02 - Verify menu functionality on Lazy Load Page", async ({ page }) => {
     await menu.clickAboutSidebarLink();
     await expect(page).toHaveURL("https://saucelabs.com/");
 
-    //Bcck to page
+    //Back to page
     await page.goBack()
     // await expect(page).toHaveURL()
 
@@ -177,7 +177,7 @@ test("TC03 - Verify menu functionality on Spinner Page", async ({ page }) => {
 
     // Verify menu tabs
     await expect(menu.allItems).toBeVisible();
-    await expect(menu.dynamicCatolog).toBeVisible();
+    await expect(menu.dynamicCatalog).toBeVisible();
     await expect(menu.submenuChevron).toBeVisible();
     await expect(menu.about).toBeVisible();
     await expect(menu.logout).toBeVisible();
@@ -198,7 +198,7 @@ test("TC03 - Verify menu functionality on Spinner Page", async ({ page }) => {
     // Navigate to Lazy Load page
     await menu.clickMenuButton();
     await menu.clickSubMenuChevron();
-    await menu.clickLazLoadButton();
+    await menu.clickLazyLoadButton();
     await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-lazy-load.html");
 
     // Navigate to Slider page
@@ -212,7 +212,7 @@ test("TC03 - Verify menu functionality on Spinner Page", async ({ page }) => {
     await menu.clickAboutSidebarLink();
     await expect(page).toHaveURL("https://saucelabs.com/");
 
-    //Bcck to page
+    //Back to page
     await page.goBack()
     // await expect(page).toHaveURL()
 
@@ -246,7 +246,7 @@ test("TC04 - Verify menu functionality on Slider Page", async ({ page }) => {
 
     // Verify menu tabs
     await expect(menu.allItems).toBeVisible();
-    await expect(menu.dynamicCatolog).toBeVisible();
+    await expect(menu.dynamicCatalog).toBeVisible();
     await expect(menu.submenuChevron).toBeVisible();
     await expect(menu.about).toBeVisible();
     await expect(menu.logout).toBeVisible();
@@ -273,7 +273,7 @@ test("TC04 - Verify menu functionality on Slider Page", async ({ page }) => {
     // Navigate to Lazy Load page
     await menu.clickMenuButton();
     await menu.clickSubMenuChevron();
-    await menu.clickLazLoadButton();
+    await menu.clickLazyLoadButton();
     await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-lazy-load.html");
 
         //Navigate to about page
@@ -281,7 +281,7 @@ test("TC04 - Verify menu functionality on Slider Page", async ({ page }) => {
     await menu.clickAboutSidebarLink();
     await expect(page).toHaveURL("https://saucelabs.com/");
 
-    //Bcck to page
+    //Back to page
     await page.goBack()
     // await expect(page).toHaveURL()
 

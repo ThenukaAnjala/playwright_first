@@ -6,7 +6,7 @@ export default class Menu{
     readonly menuButton : Locator;
     // readonly itemlist : Locator;
     readonly allItems : Locator;
-    readonly dynamicCatolog : Locator;
+    readonly dynamicCatalog : Locator;
     readonly lazyLoad : Locator;
     readonly spinner : Locator;
     readonly slider : Locator;
@@ -24,7 +24,7 @@ export default class Menu{
         // this.itemlist = page.locator("#bm-item-list");
         // this.allItems = page.locator("#dynamic_catalog_sidebar_link");
         this.allItems = page.locator('[data-test="inventory-sidebar-link"]')
-        this.dynamicCatolog = page.locator("#dynamic_catalog_sidebar_link");
+        this.dynamicCatalog = page.locator("#dynamic_catalog_sidebar_link");
         this.lazyLoad = page.locator("#dynamic_catalog_lazy_load_link");
         this.spinner = page.locator("#dynamic_catalog_spinner_link");
         this.slider = page.locator("#dynamic_catalog_slider_link");
@@ -63,7 +63,7 @@ export default class Menu{
         await this.allItems.click();
     }
 
-    async clickLazLoadButton(){
+    async clickLazyLoadButton(){
         await expect(this.lazyLoad).toBeVisible({timeout:1000});
         await this.lazyLoad.click();
     }

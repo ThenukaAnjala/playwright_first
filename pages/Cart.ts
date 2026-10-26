@@ -6,8 +6,8 @@ export default class Cart{
     readonly cartIcon : Locator;
     readonly addToCart : Locator;
     readonly removeButton : Locator;
-    readonly continueShoping : Locator;
-    readonly cheout : Locator;
+    readonly continueShopping : Locator;
+    readonly checkout : Locator;
     readonly cartHavePro : Locator;
     readonly productAddButtons: Locator;
 
@@ -20,8 +20,8 @@ export default class Cart{
         this.cartIcon = page.locator('[data-test="shopping-cart-link"]')
         this.addToCart =  page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
         this.removeButton = page.locator('[data-test="remove-sauce-labs-backpack"]');
-        this.continueShoping = page.locator('[data-test="continue-shopping"]');
-        this.cheout = page.locator('[data-test="checkout"]');
+        this.continueShopping = page.locator('[data-test="continue-shopping"]');
+        this.checkout = page.locator('[data-test="checkout"]');
         this.cartHavePro = page.locator('[data-test="inventory-item"]');
 
         // Select all Add to Cart buttons
@@ -29,9 +29,9 @@ export default class Cart{
     }
 
 
-    //click cart buttonm
+    //click cart button
 
-    async clickCarButton(){
+    async clickCartButton(){
         await expect(this.cartIcon).toBeVisible();
         await this.cartIcon.click()
     }
@@ -41,19 +41,19 @@ export default class Cart{
         await this.addToCart.click();
     }
 
-    async clickRemoveButoon(){
+    async clickRemoveButton(){
         await expect(this.removeButton).toBeVisible();
         await this.removeButton.click();
     }
 
-    async clickContinueSoppingButton(){
-        await expect(this.continueShoping).toBeVisible();
-        await this.continueShoping.click();
+    async clickContinueShoppingButton(){
+        await expect(this.continueShopping).toBeVisible();
+        await this.continueShopping.click();
     }
 
     async clickCheckoutButton(){
-        await expect(this.cheout).toBeVisible();
-        await this.cheout.click();
+        await expect(this.checkout).toBeVisible();
+        await this.checkout.click();
     }
 
     // Add any product using its name

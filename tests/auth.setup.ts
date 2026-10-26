@@ -11,7 +11,7 @@ setup("Authenticate" , async({page}) => {
     //click on login button
     await page.click("#login-button");
 
-    //Verify login is succsess
+    //Verify login is successful
     await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html")
 
     //save auth state to storage state

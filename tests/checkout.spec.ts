@@ -20,7 +20,7 @@ test("TC12 - Verify First Name, Last Name, and ZIP Code fields in Checkout Infor
 
     await cart.addProductToCart("sauce-labs-backpack")
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await cart.clickCheckoutButton()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
 
@@ -38,7 +38,7 @@ test("TC13 - Verify cancel checkout before finishing order", async ({ page }) =>
 
     await cart.addProductToCart("sauce-labs-backpack")
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await cart.clickCheckoutButton()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
 
@@ -57,7 +57,7 @@ test("TC14 - Verify checkout with Last Name and ZIP Code but without First Name"
 
     await cart.addProductToCart("sauce-labs-backpack")
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await cart.clickCheckoutButton()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
     await checkout.enterFirstNameLastNameAndZipCode("", "Kulathunga", "85779");
@@ -71,7 +71,7 @@ test("TC15 - Verify checkout with First Name and ZIP Code but without Last Name"
 
     await cart.addProductToCart("sauce-labs-backpack")
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await cart.clickCheckoutButton()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
     await checkout.enterFirstNameLastNameAndZipCode("Tiran", "", "85779");
@@ -85,7 +85,7 @@ test("TC16 - Verify checkout with First Name and Last Name but without Zip code"
 
     await cart.addProductToCart("sauce-labs-backpack")
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await cart.clickCheckoutButton()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
     await checkout.enterFirstNameLastNameAndZipCode("Tiran", "Kulathunga", "");
@@ -99,7 +99,7 @@ test("TC17 - Verify checkout with all fields empty", async ({ page }) => {
 
     await cart.addProductToCart("sauce-labs-backpack")
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await cart.clickCheckoutButton()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
     await checkout.enterFirstNameLastNameAndZipCode("", "", "");
@@ -113,7 +113,7 @@ test("TC18 - Verify checkout with only spaces in First Name", async ({ page }) =
 
     await cart.addProductToCart("sauce-labs-backpack")
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await cart.clickCheckoutButton()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
     await checkout.enterFirstNameLastNameAndZipCode("      ", "Kulathunga", "85779");
@@ -129,7 +129,7 @@ test("TC19 - Verify checkout with only spaces in Last Name", async ({ page }) =>
 
     await cart.addProductToCart("sauce-labs-backpack")
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await cart.clickCheckoutButton()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
     await checkout.enterFirstNameLastNameAndZipCode("Tiran", "    ", "85779");
@@ -145,7 +145,7 @@ test("TC20 - Verify checkout with only spaces in Zip Code", async ({ page }) => 
 
     await cart.addProductToCart("sauce-labs-backpack")
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await cart.clickCheckoutButton()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
     await checkout.enterFirstNameLastNameAndZipCode("Tiran", "Kulathunga", "     ");
@@ -162,7 +162,7 @@ test("TC21 - Verify checkout with only spaces in all fields", async ({ page }) =
 
     await cart.addProductToCart("sauce-labs-backpack")
     await cart.addProductToCart("sauce-labs-bike-light");
-    await cart.clickCarButton()
+    await cart.clickCartButton()
     await cart.clickCheckoutButton()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
     await checkout.enterFirstNameLastNameAndZipCode("    ", "      ", "     ");
