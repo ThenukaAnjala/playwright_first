@@ -1,18 +1,22 @@
+import { urls } from "../data/dataAssets";
 
 import { test, expect } from '@playwright/test';
 import Menu from '../pages/Menu';
-import Login from '../pages/Login';
+// import Login from '../pages/Login';
 
 // Login before each test case
 test.beforeEach(async ({ page }) => {
-    const login = new Login(page);
+    // const login = new Login(page);
 
-    await login.openLogin();
-    await login.enterUsername("standard_user", "secret_sauce");
+    await page.goto(urls.inventoryURL);
+    // await login.enterUsername("standard_user", "secret_sauce");
 
-    // Verify login successful
-    await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html");
-});
+    //Verify login successful
+    await expect(page).toHaveURL(
+        urls.inventoryURL
+    )
+
+})
 
 
 
@@ -53,24 +57,24 @@ test("TC01 - Verify menu functionality on Inventory Page", async ({ page }) => {
 
     // Navigate to Lazy Load page
     await menu.clickLazyLoadButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-lazy-load.html");
+    await expect(page).toHaveURL(urls.dynamicCatalogLazyLoadURL);
 
     // Navigate to Spinner page
     await menu.clickMenuButton();
     await menu.clickSubMenuChevron();
     await menu.clickSpinnerButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-spinner.html");
+    await expect(page).toHaveURL(urls.dynamicCatalogSpinnerURL);
 
     // Navigate to Slider page
     await menu.clickMenuButton();
     await menu.clickSubMenuChevron();
     await menu.clickSliderButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-slider.html");
+    await expect(page).toHaveURL(urls.dynamicCatalogSliderURL);
 
     //Navigate to about page
     await menu.clickMenuButton();
     await menu.clickAboutSidebarLink();
-    await expect(page).toHaveURL("https://saucelabs.com/");
+    await expect(page).toHaveURL(urls.aboutURL);
 
     //Back to page
     await page.goBack()
@@ -79,7 +83,7 @@ test("TC01 - Verify menu functionality on Inventory Page", async ({ page }) => {
     //Check Logout
     await menu.clickMenuButton();
     await menu.clickLogoutButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/");
+    await expect(page).toHaveURL(urls.baseURL);
 });
 
 
@@ -89,7 +93,7 @@ test("TC02 - Verify menu functionality on Lazy Load Page", async ({ page }) => {
     const menu = new Menu(page);
 
     // Open Lazy Load page
-    await page.goto("https://www.saucedemo.com/dynamic-catalog-lazy-load.html");
+    await page.goto(urls.dynamicCatalogLazyLoadURL);
 
     // Check menu button visibility
     await expect(menu.menuButton).toBeVisible();
@@ -124,24 +128,24 @@ test("TC02 - Verify menu functionality on Lazy Load Page", async ({ page }) => {
 
     // Navigate to Inventory page
     await menu.clickAllItemsButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html");
+    await expect(page).toHaveURL(urls.inventoryURL);
 
     // Navigate to Spinner page
     await menu.clickMenuButton();
     await menu.clickSubMenuChevron();
     await menu.clickSpinnerButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-spinner.html");
+    await expect(page).toHaveURL(urls.dynamicCatalogSpinnerURL);
 
     // Navigate to Slider page
     await menu.clickMenuButton();
     await menu.clickSubMenuChevron();
     await menu.clickSliderButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-slider.html");
+    await expect(page).toHaveURL(urls.dynamicCatalogSliderURL);
 
         //Navigate to about page
     await menu.clickMenuButton();
     await menu.clickAboutSidebarLink();
-    await expect(page).toHaveURL("https://saucelabs.com/");
+    await expect(page).toHaveURL(urls.aboutURL);
 
     //Back to page
     await page.goBack()
@@ -150,7 +154,7 @@ test("TC02 - Verify menu functionality on Lazy Load Page", async ({ page }) => {
     //Check Logout
     await menu.clickMenuButton();
     await menu.clickLogoutButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/");
+    await expect(page).toHaveURL(urls.baseURL);
 });
 
 
@@ -160,7 +164,7 @@ test("TC03 - Verify menu functionality on Spinner Page", async ({ page }) => {
     const menu = new Menu(page);
 
     // Open Spinner page
-    await page.goto("https://www.saucedemo.com/dynamic-catalog-spinner.html");
+    await page.goto(urls.dynamicCatalogSpinnerURL);
 
     // Check menu button visibility
     await expect(menu.menuButton).toBeVisible();
@@ -193,24 +197,24 @@ test("TC03 - Verify menu functionality on Spinner Page", async ({ page }) => {
 
     // Navigate to Inventory page
     await menu.clickAllItemsButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html");
+    await expect(page).toHaveURL(urls.inventoryURL);
 
     // Navigate to Lazy Load page
     await menu.clickMenuButton();
     await menu.clickSubMenuChevron();
     await menu.clickLazyLoadButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-lazy-load.html");
+    await expect(page).toHaveURL(urls.dynamicCatalogLazyLoadURL);
 
     // Navigate to Slider page
     await menu.clickMenuButton();
     await menu.clickSubMenuChevron();
     await menu.clickSliderButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-slider.html");
+    await expect(page).toHaveURL(urls.dynamicCatalogSliderURL);
 
         //Navigate to about page
     await menu.clickMenuButton();
     await menu.clickAboutSidebarLink();
-    await expect(page).toHaveURL("https://saucelabs.com/");
+    await expect(page).toHaveURL(urls.aboutURL);
 
     //Back to page
     await page.goBack()
@@ -219,7 +223,7 @@ test("TC03 - Verify menu functionality on Spinner Page", async ({ page }) => {
     //Check Logout
     await menu.clickMenuButton();
     await menu.clickLogoutButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/");
+    await expect(page).toHaveURL(urls.baseURL);
 });
 
 
@@ -229,7 +233,7 @@ test("TC04 - Verify menu functionality on Slider Page", async ({ page }) => {
     const menu = new Menu(page);
 
     // Open Slider page
-    await page.goto("https://www.saucedemo.com/dynamic-catalog-slider.html");
+    await page.goto(urls.dynamicCatalogSliderURL);
 
     // Check menu button visibility
     // await expect(menu.menuButton).toBeVisible();
@@ -262,24 +266,24 @@ test("TC04 - Verify menu functionality on Slider Page", async ({ page }) => {
 
     // Navigate to Inventory page
     await menu.clickAllItemsButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html");
+    await expect(page).toHaveURL(urls.inventoryURL);
 
     // Navigate to Spinner page
     await menu.clickMenuButton();
     await menu.clickSubMenuChevron();
     await menu.clickSpinnerButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-spinner.html");
+    await expect(page).toHaveURL(urls.dynamicCatalogSpinnerURL);
 
     // Navigate to Lazy Load page
     await menu.clickMenuButton();
     await menu.clickSubMenuChevron();
     await menu.clickLazyLoadButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/dynamic-catalog-lazy-load.html");
+    await expect(page).toHaveURL(urls.dynamicCatalogLazyLoadURL);
 
         //Navigate to about page
     await menu.clickMenuButton();
     await menu.clickAboutSidebarLink();
-    await expect(page).toHaveURL("https://saucelabs.com/");
+    await expect(page).toHaveURL(urls.aboutURL);
 
     //Back to page
     await page.goBack()
@@ -288,5 +292,5 @@ test("TC04 - Verify menu functionality on Slider Page", async ({ page }) => {
     //Check Logout
     await menu.clickMenuButton();
     await menu.clickLogoutButton();
-    await expect(page).toHaveURL("https://www.saucedemo.com/");
+    await expect(page).toHaveURL(urls.baseURL);
 });

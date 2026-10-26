@@ -1,17 +1,18 @@
+import { urls } from "../data/dataAssets";
 import { Page, Locator, Expect, test, expect} from "@playwright/test";
 import Login from "../pages/Login";
 import Cart from "../pages/Cart";
 
 
 test.beforeEach(async ({ page }) => {
-    const login = new Login(page);
+    // const login = new Login(page);
 
-    await login.openLogin();
-    await login.enterUsername("standard_user", "secret_sauce");
+    await page.goto(urls.inventoryURL);
+    // await login.enterUsername("standard_user", "secret_sauce");
 
     //Verify login successful
     await expect(page).toHaveURL(
-        "https://www.saucedemo.com/inventory.html"
+        urls.inventoryURL
     )
 
 })
@@ -23,7 +24,7 @@ test('TC-06 - Verify that the Cart button works correctly', async ({ page }) => 
     await expect(cart.cartIcon).toBeVisible()
      await cart.clickCartButton();
     //verify navigate correct page
-    await expect(page).toHaveURL("https://www.saucedemo.com/cart.html");
+    await expect(page).toHaveURL(urls.cartURL);
     //go back
     await expect(cart.cartHavePro).toHaveCount(0);
     // await page.goBack()

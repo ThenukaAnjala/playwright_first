@@ -1,5 +1,6 @@
 import{test, expect} from '@playwright/test';
 import Login from '../pages/Login';
+import { urls } from '../data/dataAssets';
 
 
 test ("Open SauceDemo Login page", async({page})=>{
@@ -13,7 +14,7 @@ test ("Open SauceDemo Login page", async({page})=>{
        // await page.waitForTimeout(3000); // Wait for 3 seconds
 
     //Check the URL
-    await expect(page).toHaveURL("https://www.saucedemo.com/");
+    await expect(page).toHaveURL(urls.baseURL);
         // await page.waitForTimeout(3000); // Wait for 3 seconds
 
      //Enter username
@@ -25,7 +26,7 @@ test ("Open SauceDemo Login page", async({page})=>{
     //     //await page.waitForTimeout(3000); // Wait for 3 seconds
     
     //check the url after login
-    await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html");
+    await expect(page).toHaveURL(urls.inventoryURL);
     } catch(error){
         console.error("Login test error:", error);
         throw error
@@ -43,7 +44,7 @@ test("Verify login with incorrect username and correct password", async({page}) 
         // await page.waitForTimeout(3000); // Wait for 3 seconds
 
     //check the url
-    await expect(page).toHaveURL("https://www.saucedemo.com/");
+    await expect(page).toHaveURL(urls.baseURL);
 
      //Enter Incorrect username and password
      await login.enterUsername("kalana","standard_user");
@@ -69,7 +70,7 @@ test("Verify login with correct username and incorrect password", async({page}) 
         // await page.waitForTimeout(3000); // Wait for 3 
     
     //Check the Url
-    await expect(page).toHaveURL("https://www.saucedemo.com/");
+    await expect(page).toHaveURL(urls.baseURL);
 
     //Enter the correct username & incorrect password
     await login.enterUsername("standard_user","x2548xwyQ");
@@ -97,7 +98,7 @@ test("Verify login with correct username and empty password", async({page}) =>{
         // await page.waitForTimeout(3000); // Wait for 3 seconds
 
     //check the url 
-    await expect(page).toHaveURL("https://www.saucedemo.com/");
+    await expect(page).toHaveURL(urls.baseURL);
 
     //Enter correct username and empty password
     await login.enterUsername("standard_user","");
@@ -124,7 +125,7 @@ test("Verify login with empty username and correct password", async({page}) => {
     await login.openLogin();
 
     //check the url
-    await expect(page).toHaveURL("https://www.saucedemo.com/");
+    await expect(page).toHaveURL(urls.baseURL);
 
     //enter empty username and correct password
     await login.enterUsername("","secret_sauce");
@@ -149,7 +150,7 @@ test("Verify login with empty username and empty password", async({page}) =>{
     //Open login page
     await login.openLogin();
 
-    await expect(page).toHaveURL("https://www.saucedemo.com/");
+    await expect(page).toHaveURL(urls.baseURL);
 
     //Enter empty username and password
     await login.enterUsername("","");

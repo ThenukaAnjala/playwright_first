@@ -1,4 +1,5 @@
 import {Page, Locator} from "@playwright/test";//import page library
+import { urls } from "../data/dataAssets";
 //Create login class
 export default class Login{
     //declare page property
@@ -20,7 +21,7 @@ export default class Login{
     }
 
 async openLogin(){
-    await this.page.goto("https://www.saucedemo.com/");
+    await this.page.goto(urls.baseURL);
 }
 
 async enterUsername(

@@ -1,20 +1,21 @@
+import { urls } from "../data/dataAssets";
 
 import { test, expect } from "@playwright/test";
-import Login from "../pages/Login";
+// import Login from "../pages/Login";
 import Filter from "../pages/Filter";
 
 test.beforeEach(async ({ page }) => {
-    const login = new Login(page);
+    // const login = new Login(page);
 
-    await login.openLogin();
-    await login.enterUsername("standard_user", "secret_sauce");
+    await page.goto(urls.inventoryURL);
+    // await login.enterUsername("standard_user", "secret_sauce");
 
-    // Verify login successful
+    //Verify login successful
     await expect(page).toHaveURL(
-        "https://www.saucedemo.com/inventory.html"
-    );
-});
+        urls.inventoryURL
+    )
 
+})
 test("TC05 - Verify filter Function", async ({ page }) => {
 
     const filter = new Filter(page);
