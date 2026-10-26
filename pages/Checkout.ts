@@ -9,6 +9,9 @@ export default class Checkout{
     readonly finish :Locator;
     readonly cancel :Locator;
     readonly errorMessage: Locator;
+    readonly priceTotal : Locator;
+    readonly tax : Locator;
+    readonly total : Locator;
 
 
     constructor(page:Page){
@@ -20,6 +23,9 @@ export default class Checkout{
         this.finish =  page.locator('[data-test="finish"]');
         this.cancel =  page.locator('[data-test="cancel"]');
         this.errorMessage =  page.locator('div.error-message-container.error');
+        this.priceTotal = page.locator('[data-test="subtotal-label"]')
+        this.tax = page.locator('[data-test="tax-label"]')
+        this.total = page.locator('[data-test="total-label"]')
     }
 
     async enterFirstNameLastNameAndZipCode(
@@ -45,5 +51,17 @@ export default class Checkout{
         await expect(this.cancel).toBeVisible();
         await this.cancel.click();
     }
+
+    //Calculate total price 
+    async totalPrice(): Promise<number> {
+        const subtotalText = await this.priceTotal.innerText();
+        const taxText = await this.tax.innerText();
+
+        // "Item total
+        const subtotal = Number(subtotalText.split('$')[1]);
+        const tax = Number(taxText.split('$')[1]);
+
+    return Number((subtotal + tax).toFixed(2));
+}
 
 }

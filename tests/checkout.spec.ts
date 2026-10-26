@@ -174,3 +174,27 @@ test("TC21 - Verify checkout with only spaces in all fields", async ({ page }) =
     await checkout.clickFinishButton()
 
 })
+
+
+test("TC22 Total Price and product list", async ({ page }) => {
+    const cart = new Cart(page);
+    const checkout = new Checkout(page);
+
+    await cart.addProductToCart("sauce-labs-backpack");
+    await cart.addProductToCart("sauce-labs-bike-light");
+    await cart.clickCartButton();
+    await cart.clickCheckoutButton();
+
+    await expect(page).toHaveURL(urls.checkoutStepOneURL);
+
+    await checkout.enterFirstNameLastNameAndZipCode("Tiran", "Kulathunga", "85779");
+    await checkout.clickContinueButton();
+
+    await expect(page).toHaveURL(urls.checkoutStepTwoURL);
+
+    const expectedTotal = await checkout.totalPrice();
+
+    await expect(checkout.total).toHaveText(
+        `Total: $${expectedTotal.toFixed(2)}`
+    );
+});
